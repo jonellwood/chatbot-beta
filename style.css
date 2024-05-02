@@ -97,6 +97,31 @@ body {
 	border-radius: 4px;
 	margin: 0 10px 7px 0;
 }
+.button-list .chat {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	max-height: 250px;
+	gap: 2px;
+	justify-content: center;
+	justify-items: center;
+	align-content: center;
+}
+.call-type-btn {
+	width: fit-content;
+	padding: 5px;
+	/* gap: 20%; */
+	/* color: purple; */
+}
+/* .chatbot .button-list {
+	list-style: none;
+	display: flex;
+}
+.chatbot .button-list .chat .incoming button {
+	width: 100%;
+	color: purple;
+} */
+
 .chatbox .outgoing {
 	margin: 20px 0;
 	justify-content: flex-end;

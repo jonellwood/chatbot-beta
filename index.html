@@ -8,7 +8,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script src="script.js" defer type="module"></script>
+    <script src="script.js" type="module"></script>
+    <script>
+        const chatInput = document.querySelector('.chat-input textarea');
+        const sendChatBtn = document.querySelector('.chat-input span');
+        const handleChatBtnClick = (msg, classList) => {
+            const chatbox = document.querySelector('.chatbox');
+            // userMessage = chatInput.value.trim();
+            userMessage = msg;
+
+            // console.log(chatbox);
+            if (!msg) return;
+            // attempt to append users message to chatbox element
+
+            chatbox.appendChild(createChatLi(userMessage, 'outgoing'));
+
+            setTimeout(() => {
+                // make it look like the chat-o-tron 5000 is thinking
+                chatbox.appendChild(createChatLi('Thinking...', 'incoming'));
+                generateResponse();
+            }, 600);
+        };
+        const createChatLi = (message, className) => {
+            // Create a chat <li> with passed msg and classnAme
+            const chatLi = document.createElement('li');
+            chatLi.classList.add('chat', className);
+            let chatContent =
+                className === 'outgoing'
+                    ? `<p>${message}</p>`
+                    : `<span class="material-symbols-outlined">sound_detection_dog_barking</span><p>${message}</p>`;
+            chatLi.innerHTML = chatContent;
+            return chatLi;
+        };
+    </script>
 </head>
 
 <body class="show-chatbot">
@@ -24,7 +56,23 @@
         <ul class="chatbox">
             <li class="chat incoming">
                 <span class="material-symbols-outlined">sound_detection_dog_barking</span>
-                <p>Hi there 👋 <br> How can I help you today?</p>
+                <p>Hi there 👋 <br> What are you wishing to report</p>
+            </li>
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">sound_detection_dog_barking</span>
+                <ul class="button-list">
+                    <li class="chat incoming">
+                        <button class="call-type-btn" onclick="handleChatBtnClick('Lost Pet', 'incoming')">Lost
+                            Pet</button><br>
+                        <button class="call-type-btn">Found Pet</button><br>
+                        <button class="call-type-btn">Dead Animal</button><br>
+                        <button class="call-type-btn">Animal Abuse</button><br>
+                        <button class="call-type-btn">Animal in Vehicle</button><br>
+                        <button class="call-type-btn">Animal Bite</button><br>
+                        <button class="call-type-btn">Barking Dog</button><br>
+                        <button class="call-type-btn">Illegal Hunting</button><br>
+                    </li>
+                </ul>
             </li>
         </ul>
         <div class="chat-input">

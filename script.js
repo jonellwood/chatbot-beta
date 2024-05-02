@@ -3,8 +3,6 @@ const sendChatBtn = document.querySelector('.chat-input span');
 const chatbox = document.querySelector('.chatbox');
 
 let userMessage;
-// This API Key is no longer valid. Stupid .env is being a pia right now so there we are!
-const API_KEY = 'sk-proj-ieNKR8RNF6yNcjmd9OfeT3BlbkFJI0AMP5GaIbsCkrgkBrrF';
 
 const createChatLi = (message, className) => {
 	// Create a chat <li> with passed msg and classnAme
@@ -18,31 +16,31 @@ const createChatLi = (message, className) => {
 	return chatLi;
 };
 
-const generateResponse = () => {
-	const API_URL = 'https://api.openai.com/v1/chat/completions';
+// const generateResponse = () => {
+// 	const API_URL = 'https://api.openai.com/v1/chat/completions';
 
-	const requestOptions = {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${API_KEY}`,
-		},
-		body: JSON.stringify({
-			model: 'gpt-3.5-turbo',
-			messages: [{ role: 'user', content: userMessage }],
-		}),
-	};
-	// 24:30 in resume
-	// send message and get reply from magic genie in the cloud
-	fetch(API_URL, requestOptions)
-		.then((res) => res.json())
-		.then((data) => {
-			console.log(data);
-		})
-		.catch((error) => {
-			console.error(error);
-		});
-};
+// 	const requestOptions = {
+// 		method: 'POST',
+// 		headers: {
+// 			'Content-Type': 'application/json',
+// 			Authorization: `Bearer ${API_KEY}`,
+// 		},
+// 		body: JSON.stringify({
+// 			model: 'gpt-3.5-turbo',
+// 			messages: [{ role: 'user', content: userMessage }],
+// 		}),
+// 	};
+// 	// 24:30 in resume
+// 	// send message and get reply from magic genie in the cloud
+// 	fetch(API_URL, requestOptions)
+// 		.then((res) => res.json())
+// 		.then((data) => {
+// 			console.log(data);
+// 		})
+// 		.catch((error) => {
+// 			console.error(error);
+// 		});
+// };
 
 const handleChat = () => {
 	userMessage = chatInput.value.trim();
